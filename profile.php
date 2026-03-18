@@ -19,7 +19,8 @@ if (!isset($_SESSION['email'])){
 
     <main>
         <p><? echo $_SESSION["name"] ?></p>
-        <p><? echo $_SESSION["id"] ?></p>
+        <p><? echo $_SESSION["email"] ?></p>
+        <p><? echo $_SESSION["phone"] ?></p>
 
         <button onclick="form_vision()">Изменить данные</button>
     </main>
