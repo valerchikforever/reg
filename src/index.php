@@ -3,9 +3,9 @@
 header('Content-type: application/json'); //возвращать всё в JSON
 require_once "../connection/connect.php";     //подключение к БД
 
-require_once '../vendor/autoload.php';
+require_once __DIR__ . '/../vendor/autoload.php';
 
-use App\Controllers\RegisterController;
+use App\Controllers\RegistrationController;
 use App\Controllers\LoginController;
 use App\Controllers\UpdateController;
 
@@ -21,7 +21,7 @@ $is_logged = isset($_SESSION['id']);
 switch ($method){
     case "POST":
         if ($type === "register"){
-            $register = new RegisterController($_POST['name'], $_POST['password1'], $_POST['password2'], $_POST['email'], $_POST['phone'], $pdo);
+            $register = new RegistrationController($_POST['name'], $_POST['password1'], $_POST['password2'], $_POST['email'], $_POST['phone'], $pdo);
             $register->addUser();
         }
         elseif($type === "login"){

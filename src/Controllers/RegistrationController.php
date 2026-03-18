@@ -4,9 +4,7 @@ namespace App\Controllers;
 use PDOException;
 use PDO;
 
-require_once '../../connection/connect.php';
-
-class RegisterController{
+class RegistrationController{
     private $name;
     private $password;
     private $email;
@@ -53,7 +51,7 @@ class RegisterController{
             $stmt = $this->pdo->prepare($sql);
             $stmt->execute(['name' => $this->name, 'password' => $this->password, 'email' => $this->email, 'phone' => $this->phone]);
             session_start();
-            $_SESSION['id'] = $stmt->lastInsertId();
+            $_SESSION['id'] = $this->pdo->lastInsertId();
             $_SESSION['name'] = $this->name;
             $_SESSION['email']   = $this->email;
             $_SESSION['phone']     = $this->phone;
@@ -66,6 +64,3 @@ class RegisterController{
         }    
     }
 }
-
-$register = new RegisterController($_POST['name'], $_POST['password1'], $_POST['password2'], $_POST['email'], $_POST['phone'], $pdo);
-$register->addUser();

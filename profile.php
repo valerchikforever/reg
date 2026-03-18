@@ -19,7 +19,11 @@ if (!isset($_SESSION['email'])){
 
     <main>
         <p><? echo $_SESSION["name"] ?></p>
-            <section>
+        <p><? echo $_SESSION["id"] ?></p>
+
+        <button onclick="form_vision()">Изменить данные</button>
+
+            <section id="form_section">
                 <form id='form' action="/update" method="post">
                 <div class="form-group">
                 <label for="name">Имя:</label>
@@ -47,16 +51,21 @@ if (!isset($_SESSION['email'])){
                 </div>
 
                 <div class="form-group">
-                <input id='button' type="submit" value="Зарегистрироваться" class="g-recaptcha" 
-                data-sitekey="6Lc_PIwsAAAAAIqmkoDIPQfN8bk2LgZUhQA_ytT3" 6Lc_PIwsAAAAAKkmGUJxWLakK-8M6JMDSrv5-oAH
-                data-callback='onSubmit' 
-                data-action='submit'>
+                <input id='button' type="submit" value="Обновить">
                 </div>
                 </form>
-                <p>Уже есть аккаунт? <a href="login.php">Войдите.</a></p>
             </section>
     </main>
 
     <? require_once 'patterns/footer.php'; ?>
+
+    <script>
+        const form = document.querySelector("#form_section");
+        form.style.visibility = "hidden";
+
+        function form_vision(){
+            form.style.visibility = "visible";
+        }
+    </script>
 </body>
 </html>
