@@ -18,7 +18,7 @@
         </div>
 
         <div class="form-group">
-        <label for="password">Пароль:</label>
+        <label for="password">Пароль (минимум 6 символов):</label>
         <input id='password1' type="password" name="password1" placeholder="Пароль" required>
         </div>
 
