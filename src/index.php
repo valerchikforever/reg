@@ -16,7 +16,7 @@ $params = explode('/', $q);
 $type = $params[0];
 $id = isset($params[1]) ? $params[1] : null;
 
-$is_logged = isset($_SESSION['id']);
+$is_logged = isset($_SESSION['email']);
 
 switch ($method){
     case "POST":
@@ -25,12 +25,12 @@ switch ($method){
             $register->addUser();
         }
         elseif($type === "login"){
-            $login = new LoginController($_POST['email'], $_POST['password'], $pdo);
+            $login = new LoginController($_POST['email_phone'], $_POST['password'], $pdo);
             $login->authUser();
         }
         elseif($is_logged && $type == "update"){
             $data = file_get_contents('php://input');
-            $update = new UpdateController($_POST['name'], $_POST['password1'], $_POST['password2'], $_POST['email'], $_POST['phone'], $pdo);
+            $update = new UpdateController($_POST['name'], $_POST['password1'], $_POST['password2'], $_POST['email'], $_POST['phone'], $pdo, $_SESSION['email']);
             $update->updateUser();
         }
         else{
@@ -42,12 +42,7 @@ switch ($method){
             exit(json_encode($result));
         }
         break;
-    case "DELETE":
-        if($is_logged && $id && $type == "delete"){
-            deletePost($pdo, $id);  //Удаление задачи по id
-        }
-        break;
-    default:               //При любом другом методе выдаст ошибку
+    default: 
         http_response_code(405);
         $result = [
             'status' => false,

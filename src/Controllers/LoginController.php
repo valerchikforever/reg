@@ -5,15 +5,15 @@ use PDOException;
 use PDO;
 
 class LoginController{
-    private $name;
     private $password;
-    private $email;
+    private $email_phone;
+    private $pos;
     private $pdo;
 
-    public function __construct($email, $password, $pdo)
+    public function __construct($email_phone, $password, $pdo)
     {
-        if (!empty($email) && !empty($password)){
-            $this->email = $email;
+        if (!empty($email_phone) && !empty($password)){
+            $this->email_phone = $email_phone;
             $this->password = $password;
             $this->pdo = $pdo;
         }
@@ -25,10 +25,17 @@ class LoginController{
 
     public function authUser()
     {
-        $sql = "SELECT * FROM users WHERE email = :email"; 
+        if (strpos($this->email_phone, "@")){
+            $sql = "SELECT * FROM users WHERE email = :email";
+            $index = 'email';
+        }
+        else{
+            $sql = "SELECT * FROM users WHERE phone = :phone"; 
+            $index = 'phone';
+        }
         try{
             $stmt = $this->pdo->prepare($sql);
-            $stmt->execute(['email' => $this->email]);
+            $stmt->execute([$index => $this->email_phone]);
 
             if ($stmt->rowCount() > 0) {
                 $row = $stmt->fetch(PDO::FETCH_ASSOC);

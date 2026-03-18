@@ -18,6 +18,10 @@ class RegistrationController{
                 http_response_code(400);
                 die('Пароли не совпадают!');
             }
+            if (6 > mb_strlen($password1)){
+                http_response_code(400);
+                die('Пароль сликом короткий!');
+            }
             $this->name = $name;
             $this->password = password_hash($password1, PASSWORD_DEFAULT);
             $this->email = $email;

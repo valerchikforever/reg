@@ -5,12 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Тех. задание</title>
     <link rel="stylesheet" href="styles/styles.css">
+    <script src="https://www.google.com/recaptcha/api.js?render=6Lc_PIwsAAAAAIqmkoDIPQfN8bk2LgZUhQA_ytT3"></script>
 </head>
 <body>
     <? require_once 'patterns/header.php'; ?>
 
     <section>
-        <form id='form' action="/src/register" method="post">
+        <form id='demo-form' action="/src/register" method="post">
         <div class="form-group">
         <label for="name">Имя:</label>
         <input type="text" name="name" placeholder="Иванов Иван Иванович" required>
@@ -23,12 +24,12 @@
 
         <div class="form-group">
         <label for="password">Подтвердите пароль:</label>
-        <input id='password2' type="password" name="password2" placeholder="Пароль" required>
+        <input id='password2' type="password" name="password2" placeholder="Подтвердите пароль" required>
         </div>
 
         <div class="form-group">
         <label for="phone">Телефон:</label>
-        <input type="text" name="phone" placeholder="Иванов Иван Иванович" required>
+        <input type="text" name="phone" placeholder="89993332211" required>
         </div>
 
         <div class="form-group">
@@ -50,7 +51,7 @@
     <? require_once 'patterns/footer.php'; ?>
 
     <script>
-        const form = document.querySelector('#form');
+        const form = document.querySelector('#demo-form');
         const password1 = document.querySelector('#password1');
         const password2 = document.querySelector('#password2');
         const errorMessage = document.createElement('div');
@@ -71,8 +72,6 @@
         }
         });
     </script>
-
-    <script src="https://www.google.com/recaptcha/api.js?render=6Lc_PIwsAAAAAKkmGUJxWLakK-8M6JMDSrv5-oAH"></script>
 
     <script>
     function onSubmit(token) {

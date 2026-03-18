@@ -37,18 +37,8 @@ if (!isset($_SESSION['email'])){
                     </div>
 
                     <div class="form-group">
-                    <label for="password">Пароль:</label>
-                    <input id='password1' type="password" name="password1" placeholder="Пароль">
-                    </div>
-
-                    <div class="form-group">
-                    <label for="password">Подтвердите пароль:</label>
-                    <input id='password2' type="password" name="password2" placeholder="Пароль">
-                    </div>
-
-                    <div class="form-group">
                     <label for="phone">Телефон:</label>
-                    <input type="text" name="phone" placeholder="Иванов Иван Иванович">
+                    <input type="text" name="phone" placeholder="89993332211">
                     </div>
 
                     <div class="form-group">

@@ -5,15 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Тех. задание</title>
     <link rel="stylesheet" href="styles/styles.css">
+    <script src="https://www.google.com/recaptcha/api.js?render=6Lc_PIwsAAAAAIqmkoDIPQfN8bk2LgZUhQA_ytT3"></script>
 </head>
 <body>
     <? require_once 'patterns/header.php'; ?>
 
     <section>
-        <form id='form' action="/src/login" method="post">
+        <form id='demo-form' action="/src/login" method="post">
         <div class="form-group">
         <label for="email">Email:</label>
-        <input type="email" name="email" placeholder="mail@mail.ru" required>
+        <input type="text" name="email_phone" placeholder="Введите почту или телефон" required>
         </div>
 
         <div class="form-group">
@@ -32,8 +33,6 @@
     </section>
 
     <? require_once 'patterns/footer.php'; ?>
-
-    <script src="https://www.google.com/recaptcha/api.js?render=6Lc_PIwsAAAAAKkmGUJxWLakK-8M6JMDSrv5-oAH"></script>
 
     <script>
     function onSubmit(token) {
