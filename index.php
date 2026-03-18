@@ -14,9 +14,16 @@ session_start();
     <? require_once 'patterns/header.php'; ?>
 
     <main>
-        <center>
-            <h1>Перед началом работы авторизируйтесь!</h1>
-        </center>
+        <?if (!isset($_SESSION['email'])){?>
+            <center>
+                <h1>Перед началом работы авторизируйтесь!</h1>
+            </center>
+        <?}
+        else{?>
+            <center>
+                <h1>Вы авторизваны, пользуйтесь на здоровье!</h1>
+            </center>
+        <?}?>
     </main>
 
     <? require_once 'patterns/footer.php'; ?>

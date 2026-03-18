@@ -20,6 +20,7 @@ class UpdateController{
                 http_response_code(400);
                 die('Пароли не совпадают!');
             }
+            
             $this->name = empty($name) ? $_SESSION['name'] : $name;
             $this->newemail = empty($newemail) ? $oldemail : $newemail;
             $this->oldemail = $oldemail;
@@ -58,7 +59,7 @@ class UpdateController{
             $_SESSION['name'] = $this->name;
             $_SESSION['email'] = $this->newemail;
             $_SESSION['phone'] = $this->phone;
-
+            http_response_code(200);
             header("Location: ../../profile.php");
             exit(); 
 

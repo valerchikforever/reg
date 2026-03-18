@@ -2,6 +2,7 @@
 session_start();
 
 if (!isset($_SESSION['email'])){
+    http_response_code(401);
     header('Location: index.php');
 }
 ?>

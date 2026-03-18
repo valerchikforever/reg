@@ -18,10 +18,12 @@ class RegistrationController{
                 http_response_code(400);
                 die('Пароли не совпадают!');
             }
+
             if (6 > mb_strlen($password1)){
                 http_response_code(400);
                 die('Пароль сликом короткий!');
             }
+            
             $this->name = $name;
             $this->password = password_hash($password1, PASSWORD_DEFAULT);
             $this->email = $email;
@@ -42,6 +44,7 @@ class RegistrationController{
             $stmt->execute(['name' => $this->name, 'email' => $this->email, 'phone' => $this->phone]);
 
             if (!empty($stmt->fetch(PDO::FETCH_ASSOC))){
+                http_response_code(400);
                 die('Пользователь c таким логином, номером телефона или почтой уже существует');
             }
         }

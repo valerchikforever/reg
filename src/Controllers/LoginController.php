@@ -33,6 +33,7 @@ class LoginController{
             $sql = "SELECT * FROM users WHERE phone = :phone"; 
             $index = 'phone';
         }
+        
         try{
             $stmt = $this->pdo->prepare($sql);
             $stmt->execute([$index => $this->email_phone]);
