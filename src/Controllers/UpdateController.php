@@ -4,8 +4,6 @@ namespace App\Controllers;
 use PDOException;
 use PDO;
 
-require_once '../../connection/connect.php';
-
 class UpdateController{
     private $name = '';
     private $password = '';

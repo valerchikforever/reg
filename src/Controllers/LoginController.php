@@ -1,10 +1,8 @@
 <?php
-namespace App\Сontrollers;
+namespace App\Controllers;
 
 use PDOException;
 use PDO;
-
-require_once '../../connection/connect.php';
 
 class LoginController{
     private $name;
@@ -40,13 +38,14 @@ class LoginController{
                     $_SESSION['name'] = $row['name'];
                     $_SESSION['email'] = $row['email'];
                     $_SESSION['phone'] = $row['phone'];
+                    $_SESSION['password'] = $row['password'];
                     http_response_code(200);
                     header("Location: ../../profile.php");
                 } else {
-                return "Неверный логин или пароль";
+                    die("Неверный логин или пароль");
                 }
             } else {
-                return "Неверный логин или пароль";
+                die("Неверный логин или пароль");;
             }
         }
         catch(PDOException $e){
@@ -55,6 +54,3 @@ class LoginController{
         } 
     }
 }
-
-$login = new LoginController($_POST['email'], $_POST['password'], $pdo);
-$login->authUser();

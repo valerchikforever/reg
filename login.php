@@ -10,7 +10,7 @@
     <? require_once 'patterns/header.php'; ?>
 
     <section>
-        <form id='form' action="/login" method="post">
+        <form id='form' action="/src/login" method="post">
         <div class="form-group">
         <label for="email">Email:</label>
         <input type="email" name="email" placeholder="mail@mail.ru" required>
@@ -22,13 +22,24 @@
         </div>
 
         <div class="form-group">
-        <input id='button' type="submit" value="Войти">
+        <input id='button' type="submit" value="Войти" class="g-recaptcha" 
+        data-sitekey="6Lc_PIwsAAAAAIqmkoDIPQfN8bk2LgZUhQA_ytT3"
+        data-callback='onSubmit' 
+        data-action='submit'>
         </div>
         </form>
         <p>Нет аккаунта? <a href="registration.php">Зарегистрируйтесь.</a></p>
     </section>
 
     <? require_once 'patterns/footer.php'; ?>
+
+    <script src="https://www.google.com/recaptcha/api.js?render=6Lc_PIwsAAAAAKkmGUJxWLakK-8M6JMDSrv5-oAH"></script>
+
+    <script>
+    function onSubmit(token) {
+        document.getElementById("demo-form").submit();
+    }
+    </script>
 
 </body>
 </html>

@@ -30,30 +30,30 @@ if (!isset($_SESSION['email'])){
                     <button onclick="delete_section()" style="float: right;">
                         X
                     </button>
-                    <form id='form' action="/update" method="post">
+                    <form id='form' action="/src/update" method="post">
                     <div class="form-group">
                     <label for="name">Имя:</label>
-                    <input type="text" name="name" placeholder="Иванов Иван Иванович" required>
+                    <input type="text" name="name" placeholder="Иванов Иван Иванович">
                     </div>
 
                     <div class="form-group">
                     <label for="password">Пароль:</label>
-                    <input id='password1' type="password" name="password1" placeholder="Пароль" required>
+                    <input id='password1' type="password" name="password1" placeholder="Пароль">
                     </div>
 
                     <div class="form-group">
                     <label for="password">Подтвердите пароль:</label>
-                    <input id='password2' type="password" name="password2" placeholder="Пароль" required>
+                    <input id='password2' type="password" name="password2" placeholder="Пароль">
                     </div>
 
                     <div class="form-group">
                     <label for="phone">Телефон:</label>
-                    <input type="text" name="phone" placeholder="Иванов Иван Иванович" required>
+                    <input type="text" name="phone" placeholder="Иванов Иван Иванович">
                     </div>
 
                     <div class="form-group">
                     <label for="email">Email:</label>
-                    <input type="email" name="email" placeholder="mail@mail.ru" required>
+                    <input type="email" name="email" placeholder="mail@mail.ru">
                     </div>
 
                     <div class="form-group">

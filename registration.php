@@ -37,11 +37,11 @@
         </div>
 
         <div class="form-group">
-        <!-- <input id='button' type="submit" value="Зарегистрироваться" class="g-recaptcha" 
-        data-sitekey="6Lc_PIwsAAAAAIqmkoDIPQfN8bk2LgZUhQA_ytT3" 6Lc_PIwsAAAAAKkmGUJxWLakK-8M6JMDSrv5-oAH
+        <input id='button' type="submit" value="Зарегистрироваться" class="g-recaptcha" 
+        data-sitekey="6Lc_PIwsAAAAAIqmkoDIPQfN8bk2LgZUhQA_ytT3"
         data-callback='onSubmit' 
-        data-action='submit'> -->
-        <input id='button' type="submit" value="Зарегистрироваться">
+        data-action='submit'>
+        <!-- <input id='button' type="submit" value="Зарегистрироваться"> -->
         </div>
         </form>
         <p>Уже есть аккаунт? <a href="login.php">Войдите.</a></p>
@@ -72,7 +72,7 @@
         });
     </script>
 
-    <script src="https://www.google.com/recaptcha/api.js"></script>
+    <script src="https://www.google.com/recaptcha/api.js?render=6Lc_PIwsAAAAAKkmGUJxWLakK-8M6JMDSrv5-oAH"></script>
 
     <script>
     function onSubmit(token) {

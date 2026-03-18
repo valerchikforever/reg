@@ -1,5 +1,5 @@
 <?php
-
+session_start();
 header('Content-type: application/json'); //возвращать всё в JSON
 require_once "../connection/connect.php";     //подключение к БД
 
@@ -28,6 +28,11 @@ switch ($method){
             $login = new LoginController($_POST['email'], $_POST['password'], $pdo);
             $login->authUser();
         }
+        elseif($is_logged && $type == "update"){
+            $data = file_get_contents('php://input');
+            $update = new UpdateController($_POST['name'], $_POST['password1'], $_POST['password2'], $_POST['email'], $_POST['phone'], $pdo);
+            $update->updateUser();
+        }
         else{
             http_response_code(502);
             $result = [ 
@@ -35,14 +40,6 @@ switch ($method){
                 'message' => 'Bad Gateway (Ошибочный шлюз)'
             ];
             exit(json_encode($result));
-        }
-        break;
-    case "PATCH":
-        if($is_logged && $id && $type == "update"){
-            $data = file_get_contents('php://input');
-            $data = json_decode($data, true);
-            $update = new UpdateController($_POST['name'], $_POST['email'], $_POST['phone'], $pdo);
-            $update->updateUser();
         }
         break;
     case "DELETE":

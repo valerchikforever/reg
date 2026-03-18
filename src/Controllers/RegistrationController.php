@@ -32,13 +32,13 @@ class RegistrationController{
 
     public function addUser()
     {
-        $sql = "SELECT * FROM users WHERE email = :email"; 
+        $sql = "SELECT * FROM users WHERE email = :email OR name = :name OR phone = :phone"; 
         try{
             $stmt = $this->pdo->prepare($sql);
-            $stmt->execute(['email' => $this->email]);
+            $stmt->execute(['name' => $this->name, 'email' => $this->email, 'phone' => $this->phone]);
 
             if (!empty($stmt->fetch(PDO::FETCH_ASSOC))){
-                die('Пользователь уже существует');
+                die('Пользователь c таким логином, номером телефона или почтой уже существует');
             }
         }
         catch(PDOException $e){
@@ -53,8 +53,9 @@ class RegistrationController{
             session_start();
             $_SESSION['id'] = $this->pdo->lastInsertId();
             $_SESSION['name'] = $this->name;
-            $_SESSION['email']   = $this->email;
-            $_SESSION['phone']     = $this->phone;
+            $_SESSION['email'] = $this->email;
+            $_SESSION['phone'] = $this->phone;
+            $_SESSION['password'] = $this->password;
             http_response_code(200);
             header('Location: ../../profile.php');
         }
