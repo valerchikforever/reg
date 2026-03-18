@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Тех. задание</title>
     <link rel="stylesheet" href="styles/styles.css">
-    <script src="https://www.google.com/recaptcha/api.js?render=6Lc_PIwsAAAAAIqmkoDIPQfN8bk2LgZUhQA_ytT3"></script>
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 </head>
 <body>
     <? require_once 'patterns/header.php'; ?>
@@ -13,7 +13,7 @@
     <section>
         <form id='demo-form' action="/src/register" method="post">
         <div class="form-group">
-        <label for="name">Имя:</label>
+        <label for="name">Логин:</label>
         <input type="text" name="name" placeholder="Иванов Иван Иванович" required>
         </div>
 
@@ -37,12 +37,9 @@
         <input type="email" name="email" placeholder="mail@mail.ru" required>
         </div>
 
-        <div class="form-group">
-        <input id='button' type="submit" value="Зарегистрироваться" class="g-recaptcha" 
-        data-sitekey="6Lc_PIwsAAAAAIqmkoDIPQfN8bk2LgZUhQA_ytT3"
-        data-callback='onSubmit' 
-        data-action='submit'>
-        <!-- <input id='button' type="submit" value="Зарегистрироваться"> -->
+        <div class="g-recaptcha" data-sitekey="6Ldr7I4sAAAAAG-TmV7U2cJsD9SrGEmDByW03L7Q"></div>
+            <br/>
+            <input type="submit" value="Зарегистрироваться">
         </div>
         </form>
         <p>Уже есть аккаунт? <a href="login.php">Войдите.</a></p>
@@ -72,11 +69,5 @@
         }
         });
     </script>
-
-    <script>
-    function onSubmit(token) {
-        document.getElementById("demo-form").submit();
-    }
- </script>
 </body>
 </html>

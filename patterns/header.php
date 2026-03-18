@@ -1,5 +1,5 @@
 <header>
-    <a href="../index.php"><p>Хедер</p></a>
+    <a href="../index.php"><p>Тестовое задание</p></a>
     <nav>
         <? if (isset($_SESSION['email'])){ ?>
             <a href="../profile.php"><button>Профиль</button></a>

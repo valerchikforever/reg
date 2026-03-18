@@ -13,6 +13,7 @@ if (!isset($_SESSION['email'])){
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Тех. задание</title>
     <link rel="stylesheet" href="styles/styles.css">
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 </head>
 <body>
     <? require_once 'patterns/header.php'; ?>
@@ -46,8 +47,9 @@ if (!isset($_SESSION['email'])){
                     <input type="email" name="email" placeholder="mail@mail.ru">
                     </div>
 
-                    <div class="form-group">
-                    <input id='button' type="submit" value="Обновить">
+                    <div class="g-recaptcha" data-sitekey="6Ldr7I4sAAAAAG-TmV7U2cJsD9SrGEmDByW03L7Q"></div>
+                        <br/>
+                        <input type="submit" value="Обновить">
                     </div>
                     </form>
                 </div>

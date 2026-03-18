@@ -9,8 +9,26 @@ use App\Controllers\RegistrationController;
 use App\Controllers\LoginController;
 use App\Controllers\UpdateController;
 
-$method = $_SERVER["REQUEST_METHOD"]; //получение метода
-$q = $_GET['q']; //строка после http://api/ (tasks/1)
+$dotenv = Dotenv\Dotenv::createImmutable(__DIR__.'/../connection/');
+$dotenv->load();
+
+$error = true;
+$secret = $_ENV['CAPTCHA_SECRET_KEY'];
+ 
+if (!empty($_POST['g-recaptcha-response'])) {
+	$out = file_get_contents('https://www.google.com/recaptcha/api/siteverify?secret='.$secret.'&response='.$_POST['g-recaptcha-response']);
+	$out = json_decode($out);
+	if ($out->success == true) {
+		$error = false;
+	} 
+}
+ 
+if ($error) {
+	die('Ошибка заполнения капчи.');
+}
+
+$method = $_SERVER["REQUEST_METHOD"];
+$q = $_GET['q'];
 $params = explode('/', $q);
 
 $type = $params[0];
