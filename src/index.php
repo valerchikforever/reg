@@ -1,7 +1,7 @@
 <?php
 session_start();
-header('Content-type: application/json'); //возвращать всё в JSON
-require_once "../connection/connect.php";     //подключение к БД
+header('Content-type: application/json');
+require_once "../connection/connect.php";
 
 require_once __DIR__ . '/../vendor/autoload.php';
 
